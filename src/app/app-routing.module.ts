@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RatesComponent } from './rates/rates.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ExchangeRateResolver } from './resolvers/exchange-rate.resolver';
-import { PurchaseComponent } from './purchase/purchase.component';
+import { PurchaseComponent } from './components/purchase/purchase.component';
+import { RatesComponent } from './components/rates/rates.component';
+;
 
 const routes: Routes = [
   { 

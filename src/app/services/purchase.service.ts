@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Purchase } from "../interface/purchase";
 import { FormBuilder, Validators } from "@angular/forms";
+import { PurchaseDTO } from "../interface/purchaseDTO";
 
 @Injectable({providedIn: "root"})
 
@@ -20,7 +20,8 @@ export class PurchaseService {
         });   
     }
 
-    save(purchase: Purchase): Observable<any> {      
-        return this.http.post<any>(`${environment.techicalEAPI}/Activador/Add`, purchase);    
+    save(purchase: PurchaseDTO): Observable<any> {   
+        console.log("GOT HERE", purchase);
+        return this.http.post<any>(`${environment.techicalEAPI}/Transaction/Purchase`, purchase);    
     }
 }
