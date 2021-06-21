@@ -1,0 +1,30 @@
+
+<div class="rates-table" fxLayout="column" fxLayoutAlign="center center">
+  
+  <h1>Argentine Peso Exchange Rate</h1>
+  <table mat-table [dataSource]="rateData" class="mat-elevation-z8 demo-table">
+      
+      <ng-container matColumnDef="CurrencyTo">
+        <th mat-header-cell *matHeaderCellDef> Currency </th>
+        <td mat-cell *matCellDef="let rate"> {{rate?.CurrencyTo}} </td>
+      </ng-container>    
+      
+      <ng-container matColumnDef="Buy">
+        <th mat-header-cell *matHeaderCellDef> Buy </th>
+        <td mat-cell *matCellDef="let rate"> {{ rate?.Buy }} </td>
+      </ng-container>    
+      
+      <ng-container matColumnDef="Sell">
+        <th mat-header-cell *matHeaderCellDef> Sell </th>
+        <td mat-cell *matCellDef="let rate"> {{ rate?.Sell }} </td>
+      </ng-container>      
+      
+      <ng-container matColumnDef="Update">
+        <th mat-header-cell *matHeaderCellDef> Update </th>
+        <td mat-cell *matCellDef="let rate"> {{rate?.Update}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

@@ -1,0 +1,89 @@
+<section fxLayout="column" fxLayoutAlign="center center">
+    <form
+        #form="ngForm" 
+        (ngSubmit)="onSubmit(form)" 
+        [formGroup]="purchaseForm"
+    >
+        <div fxLayout="column" fxLayoutAlign="center center" class="form-container">        
+            <div class="secondary-container" fxLayout="row" fxLayoutAlign="space-around center">        
+                <div fxLayout="column" fxLayoutAlign="center center">
+                    <h4>ARS</h4>
+                    <mat-form-field appearance="outline">
+                        <mat-label>ARS</mat-label>
+                        <input 
+                            formControlName='Amount'
+                            matInput 
+                            placeholder="$" 
+                            type="number"                             
+                            (ngModelChange)="onChange($event)"
+                            [(ngModel)]="ars"                                                               
+                        >                    
+                        <mat-hint>Hint</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <h2>To</h2>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="center center">
+
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Favorite animal</mat-label>                        
+                        <mat-select 
+                            required 
+                            formControlName='Code'  
+                            (ngModelChange)="changeClient($event)" 
+                            [(ngModel)]="initialValue"                                                       
+                            >                          
+                            <mat-option 
+                                *ngFor="let currency of currencyCombox" 
+                                [value]="currency.Id"                                
+                                >
+                                {{currency.Name}}                            
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+
+                      <mat-form-field appearance="outline">
+                        <mat-label>USD</mat-label>
+                        <input 
+                            formControlName='PurchasedAmount'
+                            matInput 
+                            placeholder="Placeholder"                              
+                            [(ngModel)]="conversion" 
+                            type="number"                                                                                                                                     
+                        >                    
+                        <mat-hint>Hint</mat-hint>
+                    </mat-form-field>
+                </div>
+            </div>        
+            <button type="submit" mat-raised-button color="primary">Purchase currency</button>
+        </div>
+    </form>
+</section>
+<!--
+<section fxLayout="column" fxLayoutAlign="center center">
+    <form [formGroup]="purchaseForm">
+       <div fxLayout="column" fxLayoutAlign="center center" class="form-container">
+            <div class="form-group">
+                <label for="">Select Currency</label>
+                <ng-select
+                    id="purchase"
+                    name="purchase"
+                    [items]="currencyCombox"
+                    formControlName="Code"
+                    bindValue="Id"
+                    bindLabel="Name"
+                    [clearable]="false"                    
+            >
+            </ng-select>    
+            </div>       
+        </div>
+        
+                
+         
+    </form>
+</section>
+-->
+
