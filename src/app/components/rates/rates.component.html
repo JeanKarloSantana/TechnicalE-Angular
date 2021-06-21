@@ -1,8 +1,8 @@
-
+<section>
 <div class="rates-table" fxLayout="column" fxLayoutAlign="center center">
   
   <h1>Argentine Peso Exchange Rate</h1>
-  <table mat-table [dataSource]="rateData" class="mat-elevation-z8 demo-table">
+  <table *ngIf="!isLoading" mat-table [dataSource]="rateData" class="mat-elevation-z8 demo-table">
       
       <ng-container matColumnDef="CurrencyTo">
         <th mat-header-cell *matHeaderCellDef> Currency </th>
@@ -27,4 +27,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <button mat-raised-button color="basic" (click)="onRefresh()">Refresh currencies</button>
 </div>
+</section>

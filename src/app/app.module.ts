@@ -10,8 +10,11 @@ import { RatesComponent } from './components/rates/rates.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { SharedModule } from './shared/shared.module';
-import { StoreModule } from '@ngrx/store';
-import { appReducer } from './app.reducer';
+import { UIService } from './services/ui.services';
+//import { appReducer } from './store/app.reducer';
+//import { StoreModule } from '@ngrx/store';
+
+
 
 @NgModule({
   declarations: [
@@ -28,9 +31,9 @@ import { appReducer } from './app.reducer';
     NgxMaskModule.forRoot(),    
     FlexLayoutModule,
     SharedModule,
-    StoreModule.forRoot({ui: appReducer}) 
+    //StoreModule.forRoot({appReducer}),
   ],
-  providers: [],
+  providers: [UIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

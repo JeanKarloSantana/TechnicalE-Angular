@@ -20,8 +20,7 @@ export class PurchaseService {
         });   
     }
 
-    save(purchase: PurchaseDTO): Observable<any> {   
-        console.log("GOT HERE", purchase);
+    save(purchase: PurchaseDTO): Observable<any> {
         return this.http.post<any>(`${environment.techicalEAPI}/Transaction/Purchase`, purchase);    
     }
 }

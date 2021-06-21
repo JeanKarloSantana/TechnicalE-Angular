@@ -4,10 +4,31 @@
         (ngSubmit)="onSubmit(form)" 
         [formGroup]="purchaseForm"
     >
-        <div fxLayout="column" fxLayoutAlign="center center" class="form-container">        
-            <div class="secondary-container" fxLayout="row" fxLayoutAlign="space-around center">        
+        <div fxLayout="column" fxLayoutAlign="center center" *ngIf="isLoading" class="form-container">
+            <mat-spinner ></mat-spinner>
+        </div>
+        
+        <div *ngIf="!isLoading" fxLayout="column" fxLayoutAlign="center center" class="form-container">        
+            
+            <div class="secondary-container" fxLayout="row" fxLayoutAlign="space-around center">
+                
                 <div fxLayout="column" fxLayoutAlign="center center">
-                    <h4>ARS</h4>
+                    
+                    <mat-form-field appearance="fill">
+                        <mat-label>Select a user</mat-label>                        
+                        <mat-select 
+                            required 
+                            formControlName='User'                                                                              
+                            >                          
+                            <mat-option 
+                                *ngFor="let user of users" 
+                                [value]="user.Id"                                
+                                >
+                                {{user.Username}}                            
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    
                     <mat-form-field appearance="outline">
                         <mat-label>ARS</mat-label>
                         <input 
@@ -17,8 +38,7 @@
                             type="number"                             
                             (ngModelChange)="onChange($event)"
                             [(ngModel)]="ars"                                                               
-                        >                    
-                        <mat-hint>Hint</mat-hint>
+                        >
                     </mat-form-field>
                 </div>
                 <div>
@@ -28,11 +48,11 @@
 
 
                     <mat-form-field appearance="fill">
-                        <mat-label>Favorite animal</mat-label>                        
+                        <mat-label>Select a currency</mat-label>                        
                         <mat-select 
                             required 
                             formControlName='Code'  
-                            (ngModelChange)="changeClient($event)" 
+                            (ngModelChange)="changeCurrency($event)" 
                             [(ngModel)]="initialValue"                                                       
                             >                          
                             <mat-option 
@@ -46,44 +66,22 @@
 
 
                       <mat-form-field appearance="outline">
-                        <mat-label>USD</mat-label>
+                        <mat-label>{{toCurrencyLabel}}</mat-label>
                         <input 
                             formControlName='PurchasedAmount'
                             matInput 
-                            placeholder="Placeholder"                              
+                            placeholder="$"                              
                             [(ngModel)]="conversion" 
                             type="number"                                                                                                                                     
-                        >                    
-                        <mat-hint>Hint</mat-hint>
+                        >
                     </mat-form-field>
                 </div>
-            </div>        
+            </div>
             <button type="submit" mat-raised-button color="primary">Purchase currency</button>
-        </div>
-    </form>
-</section>
-<!--
-<section fxLayout="column" fxLayoutAlign="center center">
-    <form [formGroup]="purchaseForm">
-       <div fxLayout="column" fxLayoutAlign="center center" class="form-container">
-            <div class="form-group">
-                <label for="">Select Currency</label>
-                <ng-select
-                    id="purchase"
-                    name="purchase"
-                    [items]="currencyCombox"
-                    formControlName="Code"
-                    bindValue="Id"
-                    bindLabel="Name"
-                    [clearable]="false"                    
-            >
-            </ng-select>    
-            </div>       
-        </div>
+             
         
-                
-         
+        </div>        
     </form>
 </section>
--->
+
 
