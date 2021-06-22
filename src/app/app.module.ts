@@ -11,8 +11,8 @@ import { PurchaseComponent } from './components/purchase/purchase.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { SharedModule } from './shared/shared.module';
 import { UIService } from './services/ui.services';
-//import { appReducer } from './store/app.reducer';
-//import { StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 
 
@@ -31,7 +31,9 @@ import { UIService } from './services/ui.services';
     NgxMaskModule.forRoot(),    
     FlexLayoutModule,
     SharedModule,
-    //StoreModule.forRoot({appReducer}),
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    }),    
   ],
   providers: [UIService],
   bootstrap: [AppComponent]
