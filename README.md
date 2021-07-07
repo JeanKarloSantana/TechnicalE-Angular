@@ -1,3 +1,7 @@
+This project still under development this front end consume the Api created in another project (TechnicalE.Web), this project has two routes /quotes & /purchase. currently this is not finished due I am currently updating the backend Api
+
+
+
 # TechnicalEAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
